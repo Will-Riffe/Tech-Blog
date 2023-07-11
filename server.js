@@ -1,7 +1,7 @@
 // imports/requires
 const express = require('express');
-const routes = require('./routes');
-const sequelize = require('./config/connection');
+const routes = require('./Control');
+const sequelize = require('./Config/connection');
 
 
 // app & PORT
@@ -12,15 +12,16 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 //Routing
 app.use(routes);
 
 
 
-// anticipating possible handlebars
-
+// Handlebars 
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 
 //Listening
