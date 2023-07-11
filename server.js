@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-
+// express middleware functions used to handle JSON parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -19,7 +19,10 @@ app.use(routes);
 
 
 
-// Handlebars 
+/*
+ Handlebars: configures express for the handlebars 
+ template rendering engine.
+*/
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
