@@ -2,7 +2,7 @@
 const express = require('express');
 const routes = require('./Control');
 const sequelize = require('./Config/connection');
-
+const exphbs = require('express-handlebars');
 
 // app & PORT
 const app = express();
@@ -26,6 +26,8 @@ app.use(routes);
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+// Specify path to our views
+app.set('View', path.join(__dirname, './View'));
 
 //Listening
 sequelize.sync({ force: false }).then(() => {
