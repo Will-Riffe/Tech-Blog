@@ -1,44 +1,52 @@
 <div class="dashboard">
-    <div class="container">
+    <div class = "container">
         <h1>Le Dashboard</h1>
-        <p class="sub-header">
-            Let's hear it
+        <p class="sub-header"> 
+            Let's hear it 
             <span id="userName" value="{{user.id}}">{{user.name}}
-            </span>!
-        </p>
+            </span>!</p>
 
-
-
-        <hr />
-
-
-
+        <hr/>
+        
         <h2>Post Fresh Content</h2>
 
         {{! Code for making a new post }}
 
         <form action="/api/post" method="post" class="container-sub">
-
+            
 
             {{! Headline Elements }}
-            <label for="post-Subject">Subject: </label>
-            <input class="post-subject-input" name="title" placeholder="This post is about..." type="text" required />
+            <label for="post-subject">Subject: </label>
+            <input 
+                class="post-subject-input"
+                name="title"
+                placeholder="This post is about..."
+                type="text"
+                required
+            />
 
             {{! Post Contents }}
             <label for="post-content">Content:</label>
-            <textarea class="post-content-input" maxlength="10000" name="content" placeholder="Content goes here..."
-                type="text" required></textarea>
+            <textarea
+                class="post-content-input"
+                maxlength="10000"
+                name="content"
+                placeholder="Content goes here..."
+                type="text"
+                required
+            ></textarea>
 
             {{! Submission Button }}
 
-            <input class="btn" id="submitPost" type="submit" value="Post it!" />
+            <input 
+            class="btn" 
+            id="submitPost"
+            type="submit"
+            value="Post it!"
+            />
         </form>
 
-
-
         <hr />
-
-
 
         <h2>
             Your Post History
