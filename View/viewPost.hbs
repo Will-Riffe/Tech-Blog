@@ -1,0 +1,84 @@
+<article class="page post-page">
+	<div class="container">
+
+		<h1>Full Post— 
+			<span>
+				{{post.title}}
+			</span>
+		</h1>
+
+		<hr />
+
+		{{! Specified Post  }}
+		<section class="displayed-post">
+
+
+			<div class="post-content">
+				{{post.content}}
+			</div>
+
+
+			<aside 
+                class="post-references">
+
+				<div 
+                    class="post-user">
+					by: {{post.user.name}}
+				</div>
+				<div 
+                    class="post-date">
+					{{post.date_created}}
+				</div>
+			</aside>
+
+		</section>
+
+
+
+        <a href="/" class="go-back">&larr; Go Back!</a>
+
+
+
+		{{! Comments for Specified Post  }}
+
+		<h2>Comments:</h2>
+
+		{{#if post.comments}}
+			<section 
+                class="sub-container">
+
+
+				{{#each post.comments as |comment|}}
+					<article 
+                        class="full-comment-section">
+
+						<div 
+                            class="comment-section-content">
+							{{comment.comment}}
+						</div>
+
+						<hr />
+
+						<div 
+                            class="post-page-post-comment-user">
+                            {{comment.user.name}}
+                        </div>
+
+						<div 
+                            class="post-page-post-comment-date">
+							{{comment.date_created}}
+						</div>
+
+					</article>
+				{{/each}}
+			</section>
+
+		{{else}}
+
+            <section class="empty-comment-history">
+                <p>Nothin' here but secrets...</p>
+            </section>
+
+		{{/if}}
+	</div>
+</article>
