@@ -1,33 +1,23 @@
-<div class="dashboard">
+<section class="dashboard">
 
-    <div class = "container">
+    <div class="container">
 
         <h1>
             Le Dashboard
         </h1>
 
-
-            <p class="sub-header"> 
-                Let's hear it 
-                <span id="userName" value="{{user.id}}">{{user.name}}
-                </span>!
-            </p>
-
-
-
-
+        <p class="sub-header">
+            Let's hear it
+            <span id="userName" value="{{user.id}}">{{user.name}}</span>!
+        </p>
 
         <hr/>
-        
-
-
 
         <h2>Post Fresh Content</h2>
 
         {{! Code for making a new post }}
 
         <form action="/api/post" method="post" class="container-sub">
-            
 
             {{! Headline Elements }}
             <label for="post-subject">Subject: </label>
@@ -51,28 +41,19 @@
             ></textarea>
 
             {{! Submission Button }}
-
             <input 
-            class="btn" 
-            id="submitPost"
-            type="submit"
-            value="Post it!"
+                class="btn" 
+                id="submitPost"
+                type="submit"
+                value="Post it!"
             />
         </form>
 
+        <hr/>
 
+        <h2>Your Post History</h2>
 
-
-        <hr />
-
-
-
-
-        <h2>
-            Your Post History
-        </h2>
-
-        <div class="sub-container" id="pastPosts">
+        <section class="sub-container" id="pastPosts">
             {{#if user.posts}}
 
             {{! If/Else for User Post history cards }}
@@ -82,28 +63,18 @@
 
             {{else}}
 
-            <div class="empty-post-history">
+            <section class="empty-post-history">
                 <p>Nothin' here but shadows...</p>
-            </div>
+            </section>
 
             {{/if}}
-        </div>
+        </section>
 
+        <hr/>
 
+        <h2>Your Comments</h2>
 
-
-
-        <hr />
-
-
-
-
-
-        <h2>
-            Your Comments
-        </h2>
-
-        <div class="sub-container" id="pastComments">
+        <section class="sub-container" id="pastComments">
             {{#if user.comments}}
 
             {{! IF/Else for User Comment history Cards }}
@@ -113,12 +84,12 @@
 
             {{else}}
 
-                <div class="empty-comment-history">
-                    <p>Nothin' here but secrets...</p>
-                </div>
-            {{/if}}
-        </div>
+            <section class="empty-comment-history">
+                <p>Nothin' here but secrets...</p>
+            </section>
 
+            {{/if}}
+        </section>
 
     </div>
-</div>
+</section>
