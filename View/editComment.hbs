@@ -1,0 +1,112 @@
+<main 
+  class="edit-comment" 
+  value="{{userId}}">
+
+
+  <section 
+    class="container">
+    
+
+
+    <h1>
+      Modify Your Comment
+    </h1>
+
+
+
+    <hr />
+
+
+    {{! Displays Specified Comment }}
+    <article 
+      class="chosen-comment">
+
+
+      <div 
+        class="editing-comment-content">
+        {{comment.comment}}
+      </div>
+
+
+      <div 
+        class="editing-comment-references">
+
+
+        <div 
+          class="comments-user" 
+          value="{{comment.user_id}}">
+          {{comment.user.name}}
+        </div>
+
+
+        <div 
+          class="comments-date">
+          {{comment.date_created}}
+        </div>
+
+
+
+      </div>
+    </article>
+
+
+
+
+    {{! Alter Comment Button }}
+    <div 
+      class="comment-alteration-container">
+
+      <input 
+        class="btn" 
+        id="editComment" 
+        type="button" 
+        value="Edit" 
+        />
+
+      <input 
+        class="btn" 
+        id="deleteComment" 
+        type="button" 
+        value="Delete" 
+        />
+    </div>
+
+
+
+
+    <hr />
+
+
+
+
+    {{! Creates new Comment }}
+    <form 
+      class="container-sub mod-comment">
+
+      <label 
+        for="comment-message">
+        Update Comment:
+      </label>
+
+      {{! Displays current Text Being Edited }}
+      <textarea
+          id="editingContents"
+          maxlength="1500"
+          name="editingContent"
+          placeholder="{{comment.comment}}..."
+          type="text"
+          required
+        >{{comment.comment}}
+      </textarea>
+
+      {{! Submission Button }}
+      <input 
+        class="btn" 
+        id="updateCommentBtn" 
+        type="submit" 
+        value="Update" 
+      />
+
+    </form>
+  </section>
+</main>
