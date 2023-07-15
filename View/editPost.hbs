@@ -1,0 +1,116 @@
+<main 
+    class="modify-post" 
+    value="{{userId}}">
+
+	<section 
+        class="container">
+
+		<h1>Modify Post:</h1>
+
+
+
+		<hr />
+
+
+        {{! Displays Specified Post }}
+		<article 
+            class="chosen-item">
+
+
+			<div 
+                class="editing-post-content">
+                {{post.content}}
+            </div>
+
+
+			<div 
+                class="editing-comment-references">
+				<p
+				    class="post-user"
+					value="{{post.user_id}}">
+                    {{post.user.name}}
+				</p>
+
+				<time 
+                    class="post-date">
+                    {{post.date_created}}
+                </time>
+			</div>
+
+		</article>
+
+
+        {{! Alter Post Buttons }}
+		<div 
+            class="alteration-container">
+
+			<input 
+                class="btn" 
+                id="editPost" 
+                type="button" 
+                value="edit" 
+            />
+
+			<input 
+                class="btn" 
+                id="deletePost" 
+                type="button" 
+                value="delete" 
+            />
+		</div>
+
+
+
+		<hr />
+
+
+
+		{{! Updates Post  }}
+		<form 
+            class="sub-container">
+
+			<label 
+                for="post title">
+                Update Title:
+            </label>
+
+
+            {{! Displays Post Title/Subject Being Edited }}
+			<input
+				class="edit-post-title"
+				name="title"
+				placeholder="{{post.title}}..."
+				type="text"
+				value="{{post.title}}"
+				required
+			/>
+
+
+            {{! Displays current Text Being Edited }}
+			<label 
+                for="post-message">
+                Update Message:
+            </label>
+
+			<textarea
+				id="editPostContent"
+                maxlength="10000"
+				name="editPostContent"
+				placeholder="{{post.content}}..."
+				type="text"
+				required
+			    >{{post.content}}
+            </textarea>
+
+
+            {{! Submission Button }}
+			<input 
+                class="btn" 
+                id="submitPostUpdate" 
+                type="submit" 
+                value="Update" 
+            />
+		</form>
+
+	</section>
+</main>
