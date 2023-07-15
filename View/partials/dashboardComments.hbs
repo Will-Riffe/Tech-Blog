@@ -1,0 +1,49 @@
+{{! Dashboard Comments  }}
+
+<article 
+    class="dashboard-comment-display" 
+    value="{{id}}">
+
+
+	<div 
+        class="comments-date">
+		{{date_created}}
+	</div>
+
+
+	<div 
+        class="comment-display">
+
+
+		<div 
+            class="comment-content">
+			{{comment}}
+		</div>
+
+
+		<hr />
+
+
+		<div 
+            class="respective-post" 
+            value="{{post.id}}">
+			Comment for Post "
+
+			<a 
+                class="post-reference" 
+                href="/dashboard/post/{{post.id}}">
+				{{post.title}}
+			</a>
+            " by 
+			<span 
+                class="user-reference" 
+                value="{{user_id}}">
+				{{post.user.name}}
+			</span>
+		</div>
+    
+
+	</div>
+
+	<i class="fa-solid fa-pen-to-square"></i>
+</article>
