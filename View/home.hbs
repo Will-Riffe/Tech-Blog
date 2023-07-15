@@ -3,9 +3,17 @@
 
         {{!-- Checks for registered user --}}
         {{#if loggedIn}}
-        <h1 class="welcome-user" value="{{userId}}">Salutations, {{userName}}!</h1>
+
+            <h1 
+                class="welcome-user" 
+                value="{{userId}}">
+                Salutations, {{userName}}!
+            </h1>
+
         {{else}}
+
         <h1>Home</h1>
+
         {{/if}}
 
         <p>Community Posts:</p>
@@ -15,28 +23,50 @@
 
 
 
-        <div class="sub-container">
-            <article class="home-container">
-                <a href="/" class="go-back">&larr; Go Back</a>
+        <div 
+            class="sub-container">
+            <article 
+                class="home-container">
+
+                <a 
+                    href="/" 
+                    class="go-back">
+                    &larr; Go Back
+                </a>
 
 
 
-                <article class="public-post">
+                <article 
+                    class="public-post">
 
 
                     {{! Post Header }}
-                    <header class="post-subject">{{post.title}}</header>
-                    <div class="post-content">{{post.content}}</div>
+                    <header 
+                        class="post-subject">
+                        {{post.title}}
+                    </header>
+                    <div 
+                        class="post-content">
+                        {{post.content}}
+                    </div>
 
 
 
                     {{! Post Footer }}
-                    <div class="post-footer">
+                    <div 
+                        class="post-footer">
                         {{! Post Footer Content }}
-                        <div class="post-owner-display">
-                            <span class="post-owner">{{post.user.name}}</span>
+                        <div 
+                            class="post-owner-display">
+                            <span 
+                                class="post-owner">
+                                {{post.user.name}}
+                            </span>
                             <br />
-                            <span class="post-date">{{post.date_created}}</span>
+                            <span 
+                                class="post-date">
+                                {{post.date_created}}
+                            </span>
                         </div>
                     </div>
 
@@ -47,36 +77,66 @@
 
 
                 {{! Posts' Comment Section }}
-                <section class="comment-section">
-                    <div class="comment-header">
-                        <h3>Comments:</h3>
+                <section 
+                    class="comment-section">
+                    <div 
+                        class="comment-header">
+                        <h3>
+                            Comments:
+                        </h3>
                     </div>
                     <hr>
 
 
 
                     {{!-- View Full Post --}}
-                    <a href="/dashboard/post/" id="fullPostPage">View Full Post</a>
+                    <a 
+                        href="/dashboard/post/" 
+                        id="fullPostPage">
+                        View Full Post
+                    </a>
 
 
 
                     {{! Section to add a comment}}
-                    <div class="add-a-comment">
-                        <h4>Comment here:</h4>
-                        <textarea id="postComment" maxlength="1500" name="postComment" placeholder="Here are my 2¢..." type="text" required></textarea>
-                        <button id="btn" for="postComment">Send</button>
-                        <hr class="underline-comment">
+                    <div 
+                        class="add-a-comment">
+                        <h4>
+                            Comment here:
+                        </h4>
+                        <textarea 
+                            id="postComment" 
+                            maxlength="1500" 
+                            name="postComment" 
+                            placeholder="Here are my 2¢..." 
+                            type="text" 
+                            required>
+                        </textarea>
+
+                        <button 
+                            id="btn" 
+                            for="postComment">
+                            Send
+                        </button>
+                        <hr 
+                            class="underline-comment"
+                        >
                     </div>
 
 
 
                     {{! The Actual Comments }}
-                    <div class="comment-container">
-                        <div class="preloader-comments">
+                    <div 
+                        class="comment-container">
+                        <div 
+                            class="preloader-comments">
                             {{! Dynamic Content Appears Here }}
                         </div>
-                        <div class="empty-comment-history">
-                            <p>Nothin' here but secrets...</p>
+                        <div 
+                            class="empty-comment-history">
+                            <p>
+                                Nothin' here but secrets...
+                            </p>
                         </div>
                     </div>
 
@@ -89,5 +149,5 @@
 
         </div>
     </div>
-    
+
 </section>

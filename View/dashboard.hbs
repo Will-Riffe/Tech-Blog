@@ -8,7 +8,11 @@
 
         <p class="sub-header">
             Let's hear it
-            <span id="userName" value="{{user.id}}">{{user.name}}</span>!
+            <span 
+                id="userName" 
+                value="{{user.id}}">
+                {{user.name}}
+            </span>!
         </p>
 
         <hr/>
@@ -17,10 +21,17 @@
 
         {{! Code for making a new post }}
 
-        <form action="/api/post" method="post" class="container-sub">
+        <form 
+            action="/api/post" 
+            method="post" 
+            class="container-sub"
+        >
 
             {{! Headline Elements }}
-            <label for="post-subject">Subject: </label>
+            <label 
+                for="post-subject">
+                Subject: 
+            </label>
             <input 
                 class="post-subject-input"
                 name="title"
