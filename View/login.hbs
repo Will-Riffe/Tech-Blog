@@ -1,0 +1,43 @@
+<main class="login">
+	<section class="container">
+		<h1>Le Tech Blog</h1>
+
+		<hr />
+
+		<h2>Got an account?</h2>
+		<p>Log in!</p>
+
+		<!-- Login Form Element -->
+		<form action="/api/user/login" method="post" class="container-sub">
+
+			<!-- Email Input -->
+			<label for="email">Email:</label>
+			<input
+				class="login-input"
+				name="email"
+				placeholder="Your Email here..."
+				type="email"
+			/>
+
+			<!-- Password -->
+			<label for="password">Password:</label>
+			<input
+				class="password-input"
+				name="password"
+				placeholder="Enter Password..."
+				type="password"
+			/>
+
+			<!-- Submission button -->
+			<input class="btn" type="submit" id="submitCredential" value="Sign In!" />
+
+			<!-- Sign up Link -->
+			<p class="sign-up">
+				Don't have an account?
+				<a href="/sign-up">Sign up!</a>
+			</p>
+
+		</form>
+
+	</section>
+</main>
