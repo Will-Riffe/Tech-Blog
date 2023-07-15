@@ -1,0 +1,33 @@
+{{! Dashboard Post  }}
+
+<article 
+    class="dashboard-post-display" 
+    value="{{id}}">
+
+	<div 
+        class="post-date">
+		{{date_created}}
+	</div>
+
+	<div 
+        class="post-display">
+
+		<h2 
+            class="post-title">
+			{{title}}
+		</h2>
+
+		<div 
+            class="post-content">
+			{{content}}
+		</div>
+
+		<a 
+            href="/dashboard/post/{{id}}">
+            View Full Post
+        </a>
+	</div>
+
+	<i class="fa-solid fa-pen-to-square" value="{{user_id}}"></i>
+
+</article>
