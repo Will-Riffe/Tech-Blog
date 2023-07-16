@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     if (!comments.length) {
         // No Comments? 404 View
       return res.status(404).render("404", {
-        layout: "blank",
+        layout: "404",
         message: "No comments found."
       });
     }

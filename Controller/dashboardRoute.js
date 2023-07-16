@@ -38,7 +38,10 @@ router.get("/", auth, async (req, res) => {
     // Checks for user data
     if (!userData) {
       // No user data? 404 view
-      return res.render("404", { layout: "blank" });
+      return res.render("404", { 
+        layout: "404",
+        message: "No user data"
+      });
     }
 
 
@@ -102,7 +105,10 @@ router.get("/post/:id", auth, async (req, res) => {
     // Checks for post data
     if (!postData) {
       // No Post data? 404 View
-      return res.render("404", { layout: "blank" });
+      return res.render("404", { 
+        layout: "404",
+        message: "No Post Data",
+      });
     }
 
 
@@ -165,7 +171,10 @@ router.get("/edit-post/:id", auth, async (req, res) => {
     // Checks for the post
     if (!postData) {
       // No Post? 404 page
-      return res.render("404", { layout: "blank" });
+      return res.render("404", { 
+        layout: "404",
+        message: "That post isn't here...",
+      });
     }
 
 
@@ -220,7 +229,10 @@ router.get("/edit-comment/:id", auth, async (req, res) => {
     // Check if comment data exists
     if (!commentData) {
       // No comment data? 404 View
-      return res.render("404", { layout: "blank" });
+      return res.render("404", { 
+        layout: "404",
+        message: "No comment data..."
+       });
     }
 
 

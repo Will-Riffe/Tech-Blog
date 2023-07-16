@@ -54,7 +54,7 @@ router.get("/", async (req, res) => {
         if (!posts || posts.length === 0) {
             // No posts? 404 Page
             return res.render("404", {
-                layout: "blank",
+                layout: "404",
                 message: "No posts found."
             });
         }
@@ -117,7 +117,7 @@ router.get("/:id", async (req, res) => {
         if (!postData) {
             // No posts? 404 Page
             return res.render("404", {
-                layout: "blank",
+                layout: "404",
                 message: "No posts found."
             });
         }
@@ -186,7 +186,7 @@ router.put("/:id", auth, async (req, res) => {
         if (postData[0] === 0) {
             // No rows updated? 404 page
             return res.render("404", {
-                layout: "blank",
+                layout: "404",
                 message: "No posts found."
             });
         }
@@ -225,7 +225,7 @@ router.delete("/:id", auth, async (req, res) => {
         // If no rows were deleted, render a 404 page
         if (!postData) {
             return res.render("404", {
-                layout: "blank",
+                layout: "404",
                 message: "No posts found."
             });
         }

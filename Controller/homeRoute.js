@@ -38,7 +38,10 @@ router.get("/", async (req, res) => {
 
         // No Posts? 404 View
         if (!postData.length) {
-            return res.render("404", { layout: "blank" });
+            return res.render("404", {
+                layout: "404",
+                message: "No posts found."
+            });
         }
 
 
