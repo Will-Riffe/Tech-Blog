@@ -8,7 +8,9 @@
     
 
 
-    <h1>
+    <h1 
+      class="editing-comment-id"
+      value="{{comment.id}}">
       Modify Your Comment
     </h1>
 
@@ -90,9 +92,9 @@
 
       {{! Displays current Text Being Edited }}
       <textarea
-          id="editingContents"
+          id="editingComment"
           maxlength="1500"
-          name="editingContent"
+          name="editingComment"
           placeholder="{{comment.comment}}..."
           type="text"
           required
