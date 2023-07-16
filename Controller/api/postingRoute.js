@@ -1,13 +1,10 @@
 const router = require("express").Router();
+const auth = require("../../utils/authorization");
 
-/*
-the auth util doesn't exist yet
-const auth = require("../utils/auth");
-*/
 
 
 // Import necessary models
-const { comment, post, user } = require("../../Model");
+const { comment, post, user } = require("../../model");
 
 // Get All Posts
 router.get("/", async (req, res) => {

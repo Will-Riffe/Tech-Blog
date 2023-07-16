@@ -1,11 +1,8 @@
 const router = require("express").Router();
 const { comment, post, user } = require("../models");
 const sequelize = require("sequelize");
+const auth = require("../utils/authorization");
 
-/*
-the auth util doesn't exist yet
-const auth = require("../utils/auth");
-*/
 
 // Loads the dashboard view
 router.get("/", auth, async (req, res) => {
