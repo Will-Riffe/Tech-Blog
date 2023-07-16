@@ -26,20 +26,21 @@ const seedDatabase = async () => {
     individualHooks will trigger model lifecycle methods— automatic
     execution of custom logic. The same is done for posts, and comments.
 */
-    const createdUsers = await user.bulkCreate(userSeed, {
-      individualHooks: true,
-      returning: true,
+    await comment.bulkCreate(commentSeed, {
+        individualHooks: true,
+        returning: true,
     });
 
-    const createdPosts = await post.bulkCreate(postSeed, {
-      individualHooks: true,
-      returning: true,
+    await post.bulkCreate(postSeed, {
+        individualHooks: true,
+        returning: true,
     });
 
-    const createdComments = await comment.bulkCreate(commentSeed, {
-      individualHooks: true,
-      returning: true,
+    await user.bulkCreate(userSeed, {
+        individualHooks: true,
+        returning: true,
     });
+
 
     // If complete, the script can exit successfully.
     console.log("Database successfully seeded!");
