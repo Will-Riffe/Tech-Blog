@@ -1,14 +1,14 @@
 {{! Dashboard Comments  }}
 
-<article 
-    class="dashboard-comment-display" 
+<section 
+    class="comment-section" 
     value="{{id}}">
 
 
-	<div 
+	<p 
         class="comments-date">
 		{{date_created}}
-	</div>
+	</p>
 
 
 	<div 
@@ -28,7 +28,6 @@
             class="respective-post" 
             value="{{post.id}}">
 			Comment for Post "
-
 			<a 
                 class="post-reference" 
                 href="/dashboard/post/{{post.id}}">
@@ -46,4 +45,4 @@
 	</div>
 
 	<i class="fa-solid fa-pen-to-square"></i>
-</article>
+</section>
