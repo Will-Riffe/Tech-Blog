@@ -32,12 +32,16 @@ if (pastComments) {
 
 
 
-// Edit Button
+
+
+// Comment Edit Button
 let userCommentViewer = document.querySelector(".edit-comment");
 let currentComment = document.querySelector(".comments-user");
 
 let userCommentViewerId;
 let currentCommentId;
+
+
 
 
 
@@ -47,14 +51,10 @@ if (userCommentViewer) {
         userCommentViewer.getAttribute("value"));
 }
 
-
-
 if (currentComment) {
     currentCommentId = parseInt(
         currentComment.getAttribute("value"));
 }
-
-
 
 if (userCommentViewerId !== currentCommentId) {
     if (document.querySelector(".alteration-container")) {
@@ -123,6 +123,8 @@ if (userCommentViewerId !== currentCommentId) {
 
 
 
+
+    
     // Delete Button
     const deleteCommentBtn = document.
         getElementById("deleteComment");

@@ -14,9 +14,13 @@ function refreshComments() {
 
 
 
+
+
 // API call to submit comment to a post
 async function addPostComment(comment, userId, postId) {
     try {
+
+
       const res = await fetch("/api/comment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -27,6 +31,7 @@ async function addPostComment(comment, userId, postId) {
         })
       });
   
+
       if (res.ok) {
         // Comment added; update comments
         refreshComments();
@@ -35,11 +40,15 @@ async function addPostComment(comment, userId, postId) {
         // Handle API call error immediately
         console.error("Error: comment not sent.");
       }
+
+
     } catch (err) {
       // Handle fetch or other error immediately
-      console.error("An error has occured");
-    }
+      console.error(
+        "An error has occured"
+    );
   }
+}
   
 
 
@@ -49,7 +58,10 @@ async function addPostComment(comment, userId, postId) {
 async function doCommentSubmit() {
     // Retriev user's comment
     const comment = document
-        .getElementById("postComment").value;
+        .getElementById(
+          "postComment"
+          ).value
+    ;
   
 
     // Checks if comment input field is empty
@@ -62,13 +74,15 @@ async function doCommentSubmit() {
     // Retrieves post ID from the specific post for the comment data
     const postId = parseInt(
             document.querySelector(".picked")
-            .getAttribute("value"));
+            .getAttribute("value"))
+    ;
   
 
     // Retrieve user ID to complete the API call
     const userId = parseInt(
             document.querySelector(".home-hello-user")
-            .getAttribute("value"));
+            .getAttribute("value"))
+    ;
   
 
     // Calls addPostComment to add the respective comment
@@ -81,7 +95,7 @@ async function doCommentSubmit() {
   
     // Clears text input after submission
     document.getElementById("commentInput").value = "";
-  }
+}
   
 
 
