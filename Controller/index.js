@@ -13,7 +13,7 @@ router.use("/dashboard", dashboardRoute);
 
 // Home 
 const homeRoute = require("./homeRoute");
-router.use("/home", homeRoute);
+router.use("/", homeRoute);
 
 
 // Login 
