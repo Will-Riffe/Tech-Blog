@@ -1,8 +1,10 @@
 // imports/requires
 const express = require('express');
-const routes = require('./Control');
-const sequelize = require('./Config/connection');
+const path = require('path');
+const routes = require('./controller');
+const sequelize = require('./config/connections');
 const exphbs = require('express-handlebars');
+const hbs = exphbs.create(); 
 
 // app & PORT
 const app = express();
