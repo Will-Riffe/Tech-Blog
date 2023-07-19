@@ -23,7 +23,7 @@ comment.init(
         allowNull: false,
         references: {
           model: "user",
-          key: "id"
+          key: "user_id"
         }
       },
 
@@ -31,10 +31,9 @@ comment.init(
       post_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
         references: {
           model: "post",
-          key: "id"
+          key: "post_id"
         }
       }
     },

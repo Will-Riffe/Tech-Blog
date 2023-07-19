@@ -19,6 +19,7 @@ post.init(
 
 
       post_id: {
+        allowNull: false,
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -36,7 +37,7 @@ post.init(
         allowNull: false,
         references: {
           model: "user",
-          key: "id"
+          key: "user_id"
         }
       },
     },

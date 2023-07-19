@@ -1,7 +1,8 @@
 [
     {
-      "name": "Will",
       "email": "w_riffe@protonmail.com",
+      "user_id": 1,
+      "name": "Will",
       "password": "Something-Password-311"
     }
   ]
