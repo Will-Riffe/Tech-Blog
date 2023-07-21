@@ -67,39 +67,32 @@ router.get("/:id", async (req, res) => {
 // User Login
 router.post("/login", async (req, res) => {
   try {
-
     const { email, password } = req.body;
     const user = await user.findOne({ where: { email } });
 
     if (!user) {
-      // If user not found, render signUp page
-      return res.render("signUp");
+      // If user not found, respond with a JSON error message
+      return res.status(404).json({ message: "User not found. Please sign up." });
     }
 
     const isValidPassword = await user.checkPassword(password);
 
     if (!isValidPassword) {
-      return res.status(400).json({ 
-        layout: "blank",
-        message: "Adjust your credentials."
-       });
+      return res.status(400).json({ message: "Invalid credentials." });
     }
 
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.userId = user.id;
       req.session.userName = user.name;
-      res.redirect("/");
+      res.status(200).json({ message: "Login successful.", user });
     });
-
-
-} catch (err) {
+  } catch (err) {
     // If an error occurs, send a 500 status with an error message
-    res.status(500).json({ 
-        message: 
-        "Oops! The server goofed! Please try again later." });
-  }      
+    res.status(500).json({ message: "Oops! The server goofed! Please try again later." });
+  }
 });
+
 
 
 

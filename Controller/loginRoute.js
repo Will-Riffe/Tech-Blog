@@ -1,19 +1,15 @@
-// Login Routes
-const express = require('express');
-const router = express.Router();
+// Login Routes 
 
-// Login
-router.get('/', async (req, res) => {
+const router = require("express").Router();
+
+// Login 
+router.get("/", async (req, res) => {
   try {
-
-    res.render('login', { active: { login: true } });
-
-  } catch (err) {
-    res.status(500).render(
-        'error', 
-        { message: 
-        'Oops! Something went wrong. Please try again later.' 
+    res.render("login", {
+      active: {login: true}
     });
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" });
   }
 });
 

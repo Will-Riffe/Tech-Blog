@@ -66,7 +66,7 @@ router.get("/", async (req, res) => {
         // If an error occurs, send a 500 status with an error message
         res.status(500).json({ 
             message: 
-            "Oops! The server goofed! Please try again later." });
+            "69" });
       }      
 });
 
@@ -129,7 +129,7 @@ router.get("/:id", async (req, res) => {
         // If an error occurs, send a 500 status with an error message
         res.status(500).json({ 
             message: 
-            "Oops! The server goofed! Please try again later." });
+            "132" });
       }      
 });
 
@@ -156,7 +156,7 @@ router.post("/", auth, async (req, res) => {
         // If an error occurs, send a 500 status with an error message
         res.status(500).json({ 
             message: 
-            "Oops! The server goofed! Please try again later." });
+            "159" });
       }      
 });
 
@@ -198,7 +198,7 @@ router.put("/:id", auth, async (req, res) => {
         // If an error occurs, send a 500 status with an error message
         res.status(500).json({ 
             message: 
-            "Oops! The server goofed! Please try again later." });
+            "201" });
       }      
 });
 
@@ -237,7 +237,7 @@ router.delete("/:id", auth, async (req, res) => {
         // If an error occurs, send a 500 status with an error message
         res.status(500).json({ 
             message: 
-            "Oops! The server goofed! Please try again later." });
+            "240" });
       }      
 });
 

@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const apiRoutes = require("./api");
 
 
 // API Routes
+const apiRoutes = require("./api");
 router.use("/api", apiRoutes);
 
 
@@ -29,10 +29,7 @@ router.use("/sign-up", signUpRoute);
 // No Route?!
 router.use((req, res) => {
   // Send back 404 page 
-  res.render("404", {
-    layout: "404",
-    message: "That route doesn't exist!"
-  });
+  res.status(404).render("404");
 });
 
 

@@ -1,4 +1,4 @@
-<main class="login">
+<main>
 	<section class="container">
 		<h1>Le Tech Blog</h1>
 
@@ -8,21 +8,24 @@
 		<p>Log in!</p>
 
 		<!-- Login Form Element -->
-		<form action="/api/user/login" method="post" class="container-sub">
+		<form action="/login" method="post" class="login">
 
 			<!-- Email Input -->
 			<label for="email">Email:</label>
 			<input
-				class="login-input"
+				class="email"
+				id="email"
 				name="email"
 				placeholder="Your Email here..."
 				type="email"
+				autocomplete="email"
 			/>
 
 			<!-- Password -->
 			<label for="password">Password:</label>
 			<input
-				class="password-input"
+				class="password"
+				id="password"
 				name="password"
 				placeholder="Enter Password..."
 				type="password"
@@ -41,3 +44,4 @@
 
 	</section>
 </main>
+  <script src="/js/login.js"></script>

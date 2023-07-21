@@ -5,7 +5,7 @@ const routes = require('./controller');
 const session = require("express-session");
 const sequelize = require('./config/connections');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({ helpers }); 
+const hbs = exphbs.create(); 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // app & PORT
@@ -53,11 +53,11 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Specify path to our views
-app.set('views', path.join(__dirname, './views'));
+app.set('views', path.join(__dirname, 'views'));
 
 //Listening
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
-      console.log(`App listening on port ${PORT}!`);
+      console.log(`App listening on port localhost:${PORT}!`);
     });
   });
