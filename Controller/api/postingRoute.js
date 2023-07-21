@@ -4,19 +4,19 @@ const auth = require("../../utils/authorization");
 
 
 // Import necessary models
-const { comment, post, user } = require("../../model");
+const { Comment, Post, User } = require("../../model");
 
 // Get All Posts
 router.get("/", async (req, res) => {
     try {
 
         // Fetch all posts; associated users and comments
-        const postData = await post.findAll({
+        const postData = await Post.findAll({
 
             // Includes user model; excludes password
             include: [
                 {
-                    model: user,
+                    model: User,
                     attributes: {
                         exclude: "password",
                     },
@@ -27,10 +27,10 @@ router.get("/", async (req, res) => {
                 nested user model excluding certain attributes
             */
                 {
-                    model: comment,
+                    model: Comment,
                     attributes: ["comment", "date_created"],
                     include: {
-                        model: user,
+                        model: User,
                         attributes: {
                             exclude: [
                                 "password", "createdAt", "updatedAt"
@@ -51,7 +51,6 @@ router.get("/", async (req, res) => {
         if (!posts || posts.length === 0) {
             // No posts? 404 Page
             return res.render("404", {
-                layout: "404",
                 message: "No posts found."
             });
         }
@@ -80,7 +79,7 @@ router.get("/:id", async (req, res) => {
 
         const id = req.params.id;
         // Fetch one post, with associated user and comments
-        const postData = await post.findOne({
+        const postData = await Post.findOne({
 
             attributes: {
                 exclude: ["password"],
@@ -92,14 +91,14 @@ router.get("/:id", async (req, res) => {
 
             include: [
                 {
-                    model: user,
+                    model: User,
                     attributes: ["name"],
                 },
                 {
-                    model: comment,
+                    model: Comment,
                     attributes: ["id", "comment", "date_created"],
                     include: {
-                        model: user,
+                        model: User,
                         attributes: {
                             exclude: [
                                 "password", "createdAt", "updatedAt"
@@ -114,7 +113,6 @@ router.get("/:id", async (req, res) => {
         if (!postData) {
             // No posts? 404 Page
             return res.render("404", {
-                layout: "404",
                 message: "No posts found."
             });
         }
@@ -141,7 +139,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", auth, async (req, res) => {
     try {
         // Create a new post with the provided data
-        const posts = await post.create({
+        const posts = await Post.create({
             title: req.body.title,
             content: req.body.content,
             user_id: req.session.userId,
@@ -166,7 +164,7 @@ router.post("/", auth, async (req, res) => {
 // Update a post
 router.put("/:id", auth, async (req, res) => {
     try {
-        const postData = await post.update(
+        const postData = await Post.update(
             {
                 title: req.body.title,
                 content: req.body.content,
@@ -183,7 +181,6 @@ router.put("/:id", auth, async (req, res) => {
         if (postData[0] === 0) {
             // No rows updated? 404 page
             return res.render("404", {
-                layout: "404",
                 message: "No posts found."
             });
         }
@@ -209,7 +206,7 @@ router.put("/:id", auth, async (req, res) => {
 // Deletes a post
 router.delete("/:id", auth, async (req, res) => {
     try {
-        const postData = await post.destroy({
+        const postData = await Post.destroy({
             where: {
                 id: req.params.id,
             },
@@ -222,7 +219,6 @@ router.delete("/:id", auth, async (req, res) => {
         // If no rows were deleted, render a 404 page
         if (!postData) {
             return res.render("404", {
-                layout: "404",
                 message: "No posts found."
             });
         }

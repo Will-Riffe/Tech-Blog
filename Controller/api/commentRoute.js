@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
   } catch (err) {
     return res.status(500).json({
         status: "error",
-        message: "Oops! Something went wrong with the server.",
+        message: "Oops! commentRoute couldn't fetch the comment!",
         error: err.message // error message for debugging
       });  
     }
@@ -55,7 +55,7 @@ router.get("/:id", async (req, res) => {
       // Error fetching the comment? The following informs the user
       return res.status(500).json({
         status: "error",
-        message: "Oops! Something went wrong with the server.",
+        message: "Oops! commentRoute couldn't get this One Comment",
         error: err.message // error message for debugging
         });
     }
@@ -84,7 +84,7 @@ router.post("/", async (req, res) => {
       // If error occurred while creating the comment
       return res.status(500).json({
         status: "error",
-        message: "Oops! Something went wrong while creating the comment.",
+        message: "Oops! commentRoute couldn't create this comment...",
         error: err.message // error message for debugging      
         });
     }
@@ -124,7 +124,7 @@ router.put("/:id", async (req, res) => {
       return res.status(500).json({
         status: "error",
         message: 
-            "Oops! Something went wrong while updating the comment.",
+            "Oops! commentRoute couldn't update this comment.",
         error: err.message // error message for debugging      
       });
     }
@@ -161,7 +161,7 @@ router.delete("/:id", async (req, res) => {
       return res.status(500).json({
         status: "error",
         message: 
-        "Oops! Something went wrong while deleting the comment.",
+        "Oops! commentRoute couldn't delte this comment...",
         error: err.message // error message for debugging
       });
     }

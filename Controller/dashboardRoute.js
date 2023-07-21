@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { comment, post, User } = require("../model");
+const { Comment, Post, User } = require("../model");
 const sequelize = require("sequelize");
 const auth = require("../utils/authorization");
 
@@ -13,14 +13,14 @@ router.get("/", auth, async (req, res) => {
       attributes: { exclude: ["password"] },
       include: [
         {
-          model: post,
+          model: Post,
           attributes: [
             "id", "title", "content", "date_created", "user_id"
         ],
           order: [[sequelize.literal("id"), "DESC"]],
         },
         {
-          model: comment,
+          model: Comment,
           attributes: ["id", "comment", "date_created"],
           include: {
             model: User,
@@ -80,15 +80,15 @@ router.get("/post/:id", auth, async (req, res) => {
 
       include: [
         {
-          model: user,
+          model: User,
           attributes: { exclude: ["password"] },
         },
 
         {
-          model: comment,
+          model: Comment,
           attributes: ["comment", "date_created"],
           include: {
-            model: user,
+            model: User,
             attributes: { exclude: ["password"] },
           },
         },
@@ -102,7 +102,6 @@ router.get("/post/:id", auth, async (req, res) => {
     if (!postData) {
       // No Post data? 404 View
       return res.render("404", { 
-        layout: "404",
         message: "No Post Data",
       });
     }
@@ -145,17 +144,17 @@ router.get("/edit-post/:id", auth, async (req, res) => {
     const postData = await post.findByPk(req.params.id, {
       include: [
         {
-          model: user,
+          model: User,
           attributes: ["name", "id"],
         },
         {
-          model: comment,
+          model: Comment,
           attributes: [
             "id", "comment", "date_created"
             ],
 
           include: {
-            model: user,
+            model: User,
             attributes: ["name", "id"],
           },
         },
@@ -168,7 +167,6 @@ router.get("/edit-post/:id", auth, async (req, res) => {
     if (!postData) {
       // No Post? 404 page
       return res.render("404", { 
-        layout: "404",
         message: "That post isn't here...",
       });
     }
@@ -213,10 +211,10 @@ router.get("/edit-comment/:id", auth, async (req, res) => {
     const commentData = await comment.findByPk(id, {
       include: [
         {
-          model: post,
+          model: Post,
         },
         {
-          model: user,
+          model: User,
         },
       ],
     });
@@ -226,7 +224,6 @@ router.get("/edit-comment/:id", auth, async (req, res) => {
     if (!commentData) {
       // No comment data? 404 View
       return res.render("404", { 
-        layout: "404",
         message: "No comment data..."
        });
     }

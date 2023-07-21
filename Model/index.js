@@ -1,5 +1,5 @@
-const comment = require('./comment');
-const post = require('./post');
+const Comment = require('./comment');
+const Post = require('./post');
 const User = require('./user');
 
 /* 
@@ -10,36 +10,36 @@ prior to export.
 */
 
 
-comment.belongsTo(post, {
+Comment.belongsTo(Post, {
     foreignKey: "post_id"
 });
 
 
-comment.belongsTo(User, {
+Comment.belongsTo(User, {
     foreignKey: 'user_Id',
     onDelete: 'CASCADE'
 });
 
 
-User.hasMany(comment, {
+User.hasMany(Comment, {
     foreignKey: "user_id",
     onDelete: "CASCADE"
 });
 
 
-User.hasMany(post, {
+User.hasMany(Post, {
     foreignKey: "user_id",
     onDelete: "CASCADE"
 });
 
 
-post.hasMany(comment, {
+Post.hasMany(Comment, {
     foreignKey: 'post_Id',
     onDelete: 'CASCADE'
 });
 
 
-post.belongsTo(User, {
+Post.belongsTo(User, {
     foreignKey: 'user_Id',
     onDelete: 'CASCADE'
 });
@@ -49,6 +49,6 @@ console.log("String from model ", User);
 
 module.exports = {
     User,
-    comment,
-    post
+    Comment,
+    Post
 };

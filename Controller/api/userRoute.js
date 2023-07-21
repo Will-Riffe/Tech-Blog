@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { comment, post, User } = require("../../model");
+const { Comment, Post, User } = require("../../model");
 
 
 
@@ -27,16 +27,16 @@ router.get("/:id", async (req, res) => {
       where: { id },
       include: [
         {
-          model: post,
+          model: Post,
           attributes: [
             "id", "title", "content", "date_created"
         ],
         },
         {
-          model: comment,
+          model: Comment,
           attributes: ["id", "comment", "post_id", "date_created"],
           include: {
-            model: post,
+            model: Post,
             attributes: ["title"],
           },
         },
@@ -46,7 +46,6 @@ router.get("/:id", async (req, res) => {
     if (!user) {
       // If user not found, render 404 page
       return res.render("404", { 
-        layout: "blank",
         message: "No user found."
        });
     }

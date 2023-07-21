@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const sequelize = require("../config/connections");
-const { comment, post, user } = require("../model");
+const { Comment, Post, User } = require("../model");
 
 // Home view Route
 router.get("/", async (req, res) => {
     try {
 
         // Fetch all posts; associated users and comments
-        const postData = await post.findAll({
+        const postData = await Post.findAll({
 
             // Sorts Post ID in descending order (newest to oldest)
             order: sequelize.literal("id DESC"),
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
                 // Includes user model; excludes password
                 {
-                    model: user,
+                    model: User,
                     attributes: { exclude: "password" },
                 },
                 
@@ -24,10 +24,10 @@ router.get("/", async (req, res) => {
                 nested user model excluding certain attributes
             */
                 {
-                    model: comment,
+                    model: Comment,
                     attributes: ["comment", "date_created"],
                     include: {
-                        model: user,
+                        model: User,
                         attributes: { exclude: ["password", "createdAt", "updatedAt"] },
                     },
                 },
@@ -39,7 +39,6 @@ router.get("/", async (req, res) => {
         // No Posts? 404 View
         if (!postData.length) {
             return res.render("404", {
-                layout: "404",
                 message: "No posts found."
             });
         }
