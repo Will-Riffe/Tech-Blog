@@ -1,12 +1,12 @@
 const router = require("express").Router();
-const { comment, post, user } = require("../../model");
+const { comment, post, User } = require("../../model");
 
 
 
 // Fetch all users
 router.get("/", async (req, res) => {
   try {
-    const users = await user.findAll();
+    const users = await User.findAll();
     res.json(users);
   } catch (err) {
     res.status(500).json({ message: "Server Error" });
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await user.findOne({
+    const user = await User.findOne({
       attributes: {
         exclude: ["password"],
       },
@@ -67,15 +67,14 @@ router.get("/:id", async (req, res) => {
 // User Login
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await user.findOne({ where: { email } });
-
+    const user = await User.findOne({ where: { email : req.body.email } });
+    
     if (!user) {
       // If user not found, respond with a JSON error message
       return res.status(404).json({ message: "User not found. Please sign up." });
     }
 
-    const isValidPassword = await user.checkPassword(password);
+    const isValidPassword = user.checkPassword(req.body.password);
 
     if (!isValidPassword) {
       return res.status(400).json({ message: "Invalid credentials." });
@@ -85,11 +84,11 @@ router.post("/login", async (req, res) => {
       req.session.loggedIn = true;
       req.session.userId = user.id;
       req.session.userName = user.name;
-      res.status(200).json({ message: "Login successful.", user });
+      res.json({ message: "Login successful.", user });
     });
   } catch (err) {
     // If an error occurs, send a 500 status with an error message
-    res.status(500).json({ message: "Oops! The server goofed! Please try again later." });
+    res.status(500).json({ message: "This is from userRoute" });
   }
 });
 
@@ -104,14 +103,14 @@ router.post("/register", async (req, res) => {
     const { name, email, password } = req.body;
 
     // Checks if user already registered
-    const existingUser = await user.findOne({ where: { email } });
+    const existingUser = await User.findOne({ where: { email } });
 
     if (existingUser) {
       return res.json({ 
         message: "Email must be unique" });
     }
 
-    const newUser = await user.create({ name, email, password });
+    const newUser = await User.create({ name, email, password });
 
     req.session.save(() => {
       req.session.loggedIn = true;

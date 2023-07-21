@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { comment, post, user } = require("../model");
+const { comment, post, User } = require("../model");
 const sequelize = require("sequelize");
 const auth = require("../utils/authorization");
 
@@ -9,7 +9,7 @@ router.get("/", auth, async (req, res) => {
   try {
 
     // Fetch all posts; associated users and comments
-    const userData = await user.findByPk(req.session.userId, {
+    const userData = await User.findByPk(req.session.userId, {
       attributes: { exclude: ["password"] },
       include: [
         {
@@ -23,7 +23,7 @@ router.get("/", auth, async (req, res) => {
           model: comment,
           attributes: ["id", "comment", "date_created"],
           include: {
-            model: user,
+            model: User,
             attributes: { exclude: ["password"] },
           },
         },
@@ -36,7 +36,6 @@ router.get("/", auth, async (req, res) => {
     if (!userData) {
       // No user data? 404 view
       return res.render("404", { 
-        layout: "404",
         message: "No user data"
       });
     }

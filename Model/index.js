@@ -1,6 +1,6 @@
 const comment = require('./comment');
 const post = require('./post');
-const user = require('./user');
+const User = require('./user');
 
 /* 
 
@@ -15,19 +15,19 @@ comment.belongsTo(post, {
 });
 
 
-comment.belongsTo(user, {
+comment.belongsTo(User, {
     foreignKey: 'user_Id',
     onDelete: 'CASCADE'
 });
 
 
-user.hasMany(comment, {
+User.hasMany(comment, {
     foreignKey: "user_id",
     onDelete: "CASCADE"
 });
 
 
-user.hasMany(post, {
+User.hasMany(post, {
     foreignKey: "user_id",
     onDelete: "CASCADE"
 });
@@ -39,16 +39,16 @@ post.hasMany(comment, {
 });
 
 
-post.belongsTo(user, {
+post.belongsTo(User, {
     foreignKey: 'user_Id',
     onDelete: 'CASCADE'
 });
 
 
-
+console.log("String from model ", User);
 
 module.exports = {
-    user,
+    User,
     comment,
     post
 };

@@ -2,13 +2,13 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connections');
 
-class user extends Model {
+class User extends Model {
     checkPassword(loginpw) {
         return bcrypt.compareSync(loginpw, this.password);
     }
 }
 
-user.init(
+User.init(
     {
         email: {
             type: DataTypes.STRING,
@@ -53,7 +53,7 @@ user.init(
 
         // Calls Seq. provides model name, adjusts the style in the db.
         sequelize,
-        modelName: "user",
+        modelName: "User",
         freezeTableName: true,
         underscored: true,
 
@@ -66,4 +66,4 @@ async function hashUserPassword(user) {
     return user;
 }
 
-module.exports = user;
+module.exports = User;
