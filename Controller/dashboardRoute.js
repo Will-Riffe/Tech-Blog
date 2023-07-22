@@ -43,15 +43,14 @@ router.get("/", auth, async (req, res) => {
 
 
     // Retrieve plain user data object
-    const user = userData.get({ plain: true });
-
+    const user = userData.map((post) => post.get({ plain: true }));
 
 
     // Render dashboard view w/ user data
     res.render("dashboard", {
+      active: { dashboard: true },
       user,
       loggedIn: req.session.loggedIn,
-      active: { dashboard: true },
     });
   } catch (err) {
     // Handle server error
@@ -72,7 +71,7 @@ router.get("/post/:id", auth, async (req, res) => {
   try {
 
     // Fetch post data; associated user and comment data
-    const postData = await post.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
 
       attributes: [
         "id", "title", "content", "date_created"
@@ -141,7 +140,7 @@ router.get("/edit-post/:id", auth, async (req, res) => {
   try {
 
     // Fetch post data along with associated user and comments
-    const postData = await post.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -208,7 +207,7 @@ router.get("/edit-comment/:id", auth, async (req, res) => {
     const id = req.params.id;
 
     // Fetch comment data w/ associated post and user data
-    const commentData = await comment.findByPk(id, {
+    const commentData = await Comment.findByPk(id, {
       include: [
         {
           model: Post,

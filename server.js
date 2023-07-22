@@ -40,7 +40,7 @@ app.use(session(sess));
 // express middleware functions used to handle JSON parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
 
 //Routing
 app.use(routes);
