@@ -1,5 +1,5 @@
 const sequelize = require("../config/config.js");
-const { Comment, Post, User } = require("../model");
+const { Comment, Post, User } = require("../models");
 
 // Imports seed data for users, posts, and comments
 const userSeed = require("./001-users.json");
