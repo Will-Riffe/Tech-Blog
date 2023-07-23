@@ -1,7 +1,7 @@
 // imports/requires
 const express = require('express');
 const path = require('path');
-const routes = require('./controller');
+const routes = require('./controller/index.js');
 const session = require("express-session");
 const sequelize = require('./config/connections');
 const exphbs = require('express-handlebars');
