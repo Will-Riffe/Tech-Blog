@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Comment = require("../../rename");
+const Comment = require("../../models");
 
 
 // Create a Comment

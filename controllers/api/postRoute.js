@@ -4,7 +4,7 @@ const auth = require("../../utils/authorization");
 
 
 // Import necessary models
-const { Comment, Post, User } = require("../../rename");
+const { Comment, Post, User } = require("../../models");
 
 // Get All Posts
 router.get("/", async (req, res) => {
