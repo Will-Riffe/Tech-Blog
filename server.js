@@ -2,16 +2,15 @@
 const express = require('express');
 const path = require('path');
 const session = require("express-session");
-const sequelize = require('./config/connections');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create(); 
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // app & PORT
 const app = express();
 const PORT = process.env.PORT || 3001;
+const sequelize = require('./config/connections.js');
 
-
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 // Creating App Session
 const sess = {
   secret: "secret",
