@@ -8,7 +8,7 @@ const hbs = exphbs.create();
 // app & PORT
 const app = express();
 const PORT = process.env.PORT || 3001;
-const sequelize = require('./config/connections.js');
+const sequelize = require('./rename/config.js');
 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 // Creating App Session
