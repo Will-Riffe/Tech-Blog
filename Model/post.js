@@ -6,6 +6,14 @@ class Post extends Model { }
 
 Post.init(
     {
+
+      id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+
       content: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -16,14 +24,6 @@ Post.init(
         type: DataTypes.DATEONLY,
         defaultValue: DataTypes.NOW,
         allowNull: false
-      },
-
-
-      post_id: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
       },
 
 
@@ -38,7 +38,7 @@ Post.init(
         allowNull: false,
         references: {
           model: User,
-          key: "user_id"
+          key: "id"
         }
       },
     },

@@ -9,9 +9,8 @@
         <p class="sub-header">
             Let's hear it
             <span 
-                id="userName" 
-                value="{{user.id}}">
-                {{user.name}}
+                id="userName">
+                {{userName}}
             </span>!
         </p>
 
@@ -22,9 +21,7 @@
         {{! Code for making a new post }}
 
         <form 
-            action="/api/post" 
-            method="post" 
-            class="container-sub"
+            id="post-form"
         >
 
             {{! Headline Elements }}
@@ -52,12 +49,11 @@
             ></textarea>
 
             {{! Submission Button }}
-            <input 
+            <button 
                 class="btn" 
                 id="submitPost"
                 type="submit"
-                value="Post it!"
-            />
+            >POST</button>
         </form>
 
         <hr/>
@@ -65,10 +61,10 @@
         <h2>Your Post History</h2>
 
         <section class="sub-container" id="pastPosts">
-            {{#if user.posts}}
+            {{#if posts}}
 
             {{! If/Else for User Post history cards }}
-            {{#each user.posts as |post|}}
+            {{#each posts as |post|}}
             {{> dashboardPosts}}
             {{/each}}
 

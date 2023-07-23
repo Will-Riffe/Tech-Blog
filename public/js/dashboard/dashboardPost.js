@@ -145,12 +145,25 @@ if (editPostViewId !== currentPostId) {
 }
 
 
-const createPostBtn = document.getElementById("submitPost");
 
-if (createPostBtn) {
-  createPostBtn.addEventListener("click", () => {
-    // Disable the create post button temporarily to prevent multiple clicks
-    createPostBtn.setAttribute("disabled", "");
-  });
+async function createPost(event) {
+  event.preventDefault();
+
+  const title = document.querySelector(`input[name="title"]`).value.trim();
+  const content = document.querySelector(`textarea[name="content"]`).value.trim();
+  if (title && content) {
+    await fetch('/api/post', {
+      method: 'POST',
+      body: JSON.stringify({
+        title,
+        content
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+      document.location.replace('/dashboard');
+
+  }
 }
 
+document.querySelector('#post-form').addEventListener('submit', createPost);

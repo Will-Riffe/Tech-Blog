@@ -96,7 +96,7 @@ router.get("/:id", async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ["id", "comment", "date_created"],
+                    attributes: ["comment", "date_created"],
                     include: {
                         model: User,
                         attributes: {
@@ -137,24 +137,23 @@ router.get("/:id", async (req, res) => {
 
 // Create a post
 router.post("/", auth, async (req, res) => {
+    console.log("hit new post route")
     try {
         // Create a new post with the provided data
-        const posts = await Post.create({
+        const post = await Post.create({
             title: req.body.title,
             content: req.body.content,
             user_id: req.session.userId,
         });
+        console.log("testing", post);
+        res.json(post);
 
-        // Sets session to 'loggedIn'; sends posts as JSON response
-        req.session.save(() => {
-            req.session.loggedIn = true;
-            res.redirect("/dashboard");
-        });
+
     } catch (err) {
         // If an error occurs, send a 500 status with an error message
         res.status(500).json({ 
             message: 
-            "159" });
+            "unable to create post" });
       }      
 });
 

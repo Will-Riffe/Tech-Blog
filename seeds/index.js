@@ -1,5 +1,5 @@
 const sequelize = require("../config/connections");
-const { comment, post, user } = require("../model");
+const { Comment, Post, User } = require("../model");
 
 // Imports seed data for users, posts, and comments
 const userSeed = require("./001-users.json");
@@ -27,18 +27,18 @@ const seedDatabase = async () => {
     execution of custom logic. The same is done for posts, and comments.
 */
 
-    await user.bulkCreate(userSeed, {
+    await User.bulkCreate(userSeed, {
         individualHooks: true,
         returning: true,
     });
 
 
-    await post.bulkCreate(postSeed, {
+    await Post.bulkCreate(postSeed, {
         individualHooks: true,
         returning: true,
     });
 
-    await comment.bulkCreate(commentSeed, {
+    await Comment.bulkCreate(commentSeed, {
         individualHooks: true,
         returning: true,
     });
