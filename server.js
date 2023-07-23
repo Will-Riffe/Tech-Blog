@@ -1,7 +1,6 @@
 // imports/requires
 const express = require('express');
 const path = require('path');
-const routes = require('./controller/index.js');
 const session = require("express-session");
 const sequelize = require('./config/connections');
 const exphbs = require('express-handlebars');
@@ -42,9 +41,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
 
-//Routing
-app.use(routes);
-
 /*
  Handlebars: configures express for the handlebars 
  template rendering engine.
@@ -54,6 +50,9 @@ app.set("view engine", "handlebars");
 
 // Specify path to our views
 app.set('views', path.join(__dirname, 'views'));
+
+//Routing
+app.use(require('./controller'));
 
 //Listening
 sequelize.sync({ force: false }).then(() => {
