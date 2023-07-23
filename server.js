@@ -51,7 +51,7 @@ app.set("view engine", "handlebars");
 app.set('views', path.join(__dirname, 'views'));
 
 //Routing
-app.use(require('./controller'));
+app.use(require('./controllers'));
 
 //Listening
 sequelize.sync({ force: false }).then(() => {
