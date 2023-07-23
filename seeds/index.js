@@ -1,4 +1,4 @@
-const sequelize = require("../rename/config.js");
+const sequelize = require("../config/config.js");
 const { Comment, Post, User } = require("../model");
 
 // Imports seed data for users, posts, and comments

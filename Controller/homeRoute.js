@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Comment, Post, User } = require("../model");
-const sequelize = require("../rename/config");
+const sequelize = require("../config/config");
 
 // Home view Route
 router.get("/", async (req, res) => {

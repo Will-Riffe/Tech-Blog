@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../rename/config");
+const sequelize = require("../config/config");
 const Post = require("./post");
 const User = require("./user");
 
