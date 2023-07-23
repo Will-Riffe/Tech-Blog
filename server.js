@@ -56,7 +56,7 @@ app.set("view engine", "handlebars");
 app.set('views', path.join(__dirname, 'views'));
 
 //Listening
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
       console.log(`App listening on port localhost:${PORT}!`);
     });
