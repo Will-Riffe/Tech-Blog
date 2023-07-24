@@ -1,0 +1,18 @@
+
+
+body {
+    background-color: #979696;
+  }
+
+  .article-background, .form-control, .sub-container {
+    background-color: #cacaca;
+  }
+
+  .navbar {
+    background-color: #333; 
+  }
+  
+  .footer {
+    background-color: #333; 
+    color:azure;
+  }

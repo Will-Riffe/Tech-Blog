@@ -1,15 +1,10 @@
 <body>
-
     <section class="container">
-
-        <h1>
-            Dashboard
-        </h1>
+        <h1>Dashboard</h1>
 
         <p class="sub-header">
             Let's hear it
-            <span 
-                id="userName">
+            <span id="userName">
                 {{userName}}
             </span>!
         </p>
@@ -19,41 +14,22 @@
         <h2>Post Fresh Content</h2>
 
         {{! Code for making a new post }}
-
-        <form 
-            id="post-form"
-        >
+        <form id="post-form">
 
             {{! Headline Elements }}
-            <label 
-                for="post-subject">
-                Subject: 
-            </label>
-            <input 
-                class="post-subject-input"
-                name="title"
-                placeholder="This post is about..."
-                type="text"
-                required
-            />
+            <div class="form-group">
+                <label for="post-subject">Subject:</label>
+                <input class="form-control post-subject-input" name="title" placeholder="This post is about..." type="text" required />
+            </div>
 
             {{! Post Contents }}
-            <label for="post-content">Content:</label>
-            <textarea
-                class="post-content-input"
-                maxlength="10000"
-                name="content"
-                placeholder="Content goes here..."
-                type="text"
-                required
-            ></textarea>
+            <div class="form-group">
+                <label for="post-content">Content:</label>
+                <textarea class="form-control post-content-input" maxlength="10000" name="content" placeholder="Content goes here..." type="text" required></textarea>
+            </div>
 
             {{! Submission Button }}
-            <button 
-                class="btn" 
-                id="submitPost"
-                type="submit"
-            >POST</button>
+            <button class="btn btn-primary" id="submitPost" type="submit">POST</button>
         </form>
 
         <hr/>
@@ -62,18 +38,19 @@
 
         <section class="sub-container" id="pastPosts">
             {{#if posts}}
-
-            {{! If/Else for User Post history cards }}
-            {{#each posts as |post|}}
-            {{> dashboardPosts}}
-            {{/each}}
-
+                {{! If/Else for User Post history cards }}
+                {{#each posts as |post|}}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title bg-dark text-white p-2">{{post.title}}</h5>
+                            <p class="card-text text-black">{{post.content}}</p>
+                        </div>
+                    </div>
+                {{/each}}
             {{else}}
-
-            <section class="empty-post-history">
-                <p>Nothin' here but shadows...</p>
-            </section>
-
+                <section class="empty-post-history">
+                    <p>Nothin' here but shadows...</p>
+                </section>
             {{/if}}
         </section>
 
@@ -83,25 +60,23 @@
 
         <section class="sub-container" id="pastComments">
             {{#if user.comments}}
-
-            {{! IF/Else for User Comment history Cards }}
-            {{#each user.comments}}
-                {{> dashboardComments}}
-            {{/each}}
-
+                {{! IF/Else for User Comment history Cards }}
+                {{#each user.comments}}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p class="card-text">{{this}}</p>
+                        </div>
+                    </div>
+                {{/each}}
             {{else}}
-
-            <section class="empty-comment-history">
-                <p>Nothin' here but secrets...</p>
-            </section>
-
+                <section class="empty-comment-history">
+                    <p>Nothin' here but secrets...</p>
+                </section>
             {{/if}}
         </section>
-
-    </div>
+    </section>
 </body>
-
-  <script src="/js/dashboard/dashboardCom.js"></script>
-  <script src="/js/dashboard/dashboardPost.js"></script>
-  <script src="/js/dashboard/dashboardPostUpdate.js"></script>
-  <script src="/js/dashboard/update-delete.js"></script>
+<script src="/js/dashboard/dashboardCom.js"></script>
+<script src="/js/dashboard/dashboardPost.js"></script>
+<script src="/js/dashboard/dashboardPostUpdate.js"></script>
+<script src="/js/dashboard/update-delete.js"></script>

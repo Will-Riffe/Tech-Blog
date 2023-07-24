@@ -1,159 +1,93 @@
 <section class="page home">
     <div class="container">
 
-        {{!-- Checks for registered user --}}
+        {{!-- Display the user's name if logged in --}}
         {{#if loggedIn}}
-
-            <h1 
-                class="welcome-user" 
-                value="{{userId}}">
+            <h1 class="welcome-user" value="{{userId}}">
                 Salutations, {{userName}}!
             </h1>
-
         {{else}}
-
-        <h1>Home</h1>
-
+            <h1>Home</h1>
         {{/if}}
 
-        <p>Community Posts:</p>
-
+        <h2>Community Posts:</h2>
         <hr>
 
+        {{!-- Loop through all posts and display them --}}
+        {{#each posts}}
+            <article class="home-container card mb-4 article-background">
+                <div class="card-body">
 
-
-
-        <div 
-            class="sub-container">
-            <article 
-                class="home-container">
-
-                <a 
-                    href="/" 
-                    class="go-back">
-                    &larr; Go Back
-                </a>
-
-
-
-                <article 
-                    class="public-post"
-                    value="{{post.id}}">
-
-
-                    {{! Post Header }}
-                    <header 
-                        class="post-subject">
-                        {{post.title}}
-                    </header>
-                    <div 
-                        class="post-content">
-                        {{post.content}}
-                    </div>
-
-
-
-                    {{! Post Footer }}
-                    <div 
-                        class="post-footer">
-                        {{! Post Footer Content }}
-                        <div 
-                            class="post-owner-display">
-                            <span 
-                                class="post-owner">
-                                {{post.user.name}}
-                            </span>
-                            <br />
-                            <span 
-                                class="post-date">
-                                {{post.date_created}}
-                            </span>
+                    <section class="public-post">
+                        {{! Post Header }}
+                        <header class="post-subject bg-dark text-white p-2 mb-2">
+                            {{this.title}}
+                        </header>
+                        <div class="post-content text-black">
+                            {{this.content}}
                         </div>
-                    </div>
 
-
-                </article>
-
-
-
-
-                {{! Posts' Comment Section }}
-                <section 
-                    class="comment-section"
-                    value="{{id}}">
-                    <div 
-                        class="comment-header">
-                        <h3>
-                            Comments:
-                        </h3>
-                    </div>
-                    <hr>
-
-
-
-                    {{!-- View Full Post --}}
-                    <a 
-                        href="/dashboard/post/" 
-                        id="fullPostPage">
-                        View Full Post
-                    </a>
-
-
-
-                    {{! Section to add a comment}}
-                    <div 
-                        class="add-a-comment">
-                        <h4>
-                            Comment here:
-                        </h4>
-                        <textarea 
-                            id="postComment" 
-                            maxlength="1500" 
-                            name="postComment" 
-                            placeholder="Here are my 2¢..." 
-                            type="text" 
-                            required>
-                        </textarea>
-
-                        <button 
-                            id="postCommentBtn" 
-                            for="postComment">
-                            Send
-                        </button>
-                        <hr 
-                            class="underline-comment"
-                        >
-                    </div>
-
-
-
-                    {{! The Actual Comments }}
-                    <div 
-                        class="comment-container">
-                        <div 
-                            class="preloader-comments">
-                            {{! Dynamic Content Appears Here }}
+                        {{! Post Footer }}
+                        <div class="post-footer">
+                            {{! Post Footer Content }}
+                            <div class="post-owner-display">
+                                <span class="post-owner">
+                                    {{this.user.name}}
+                                </span>
+                                <br />
+                                <span class="post-date">
+                                    {{this.date_created}}
+                                </span>
+                            </div>
                         </div>
-                        <div 
-                            class="empty-comment-history">
+                    </section>
+
+                    {{!-- Posts' Comment Section --}}
+                    <section class="comment-section">
+                        <div class="comment-header">
                             <p>
-                                Nothin' here but secrets...
+                                Comments:
                             </p>
                         </div>
-                    </div>
 
+                        {{!-- View Full Post --}}
+                        <a href="/dashboard/post/{{this.id}}" id="fullPostPage" class="btn btn-primary">
+                            View Full Post
+                        </a>
 
-                </section>
+                        <hr>
 
+                        {{! Section to add a comment}}
+                        <div class="add-a-comment">
+                            <h4>
+                                Comment here:
+                            </h4>
+                            <textarea id="postComment" maxlength="1500" name="postComment" placeholder="Here are my 2¢..." type="text" required class="form-control"></textarea>
 
+                            <button id="postCommentBtn" for="postComment" class="btn btn-success mt-2">
+                                Send
+                            </button>
+                            <hr>
+                        </div>
+
+                        {{! The Actual Comments }}
+                        <div class="comment-container">
+                            <div class="preloader-comments">
+                                {{! Dynamic Content Appears Here }}
+                            </div>
+                            <div class="empty-comment-history">
+                                <p>
+                                    Nothin' here but secrets...
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </article>
-
-
-        </div>
+        {{/each}}
     </div>
-
 </section>
 
-    <script src="/js/home/homeInteractions.js"></script>
-    <script src="/js/home/submitComments.js"></script>
-    <script src="/js/home/summonPostComments.js"></script>
+<script src="/js/home/homeInteractions.js"></script>
+<script src="/js/home/submitComments.js"></script>
+<script src="/js/home/summonPostComments.js"></script>
