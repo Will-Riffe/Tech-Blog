@@ -1,24 +1,26 @@
+// Display success alert
+function showSuccessAlert(message) {
+  alert(message);
+}
+
+// Display error alert
+function showErrorAlert(message) {
+  alert(message);
+}
+
 // Registers the user to the API endpoint
 async function registerUser(name, email, password) {
   try {
-    console.log("Registering user:", name, email, password);
-
     // Make the API call to register the user
     const response = await fetch("/api/user/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       // Convert user data to JSON
-      body: JSON.stringify({ 
-          name: name, 
-          email: email, 
-          password: password 
-      }), 
+      body: JSON.stringify({ name: name, email: email, password: password }),
     });
 
     // Parse the response as JSON
     const data = await response.json();
-
-    console.log("API response:", data);
 
     // Check if the email is already in use
     if (data.message === "Issue with credentials") {

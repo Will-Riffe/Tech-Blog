@@ -32,7 +32,7 @@ router.get("/success", async (req, res) => {
         as data. The logged-in variable is used to display conditional 
         content based on user authentication status
     */
-     res.render("successful", {
+     res.render("signupSuccess", {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
