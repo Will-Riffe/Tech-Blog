@@ -107,14 +107,16 @@ async function checkEmail(email) {
 
 async function checkPassword(password) {
   console.log("Password:", password); // Debugging statement
-  console.log("Password length:", password.length);
-  const isValidLength = await validateInput(
-    password,
-    8,
-    "Password must have a minimum of 8 characters",
-    "Password"
-  );
-  return isValidLength;
+  const passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{8,}$/;
+  const isValidRegex = await regexCheck(password, passwordRegex);
+
+  if (!isValidRegex) {
+    console.log("Password failed regex check:", password); // Debugging statement
+    return false;
+  }
+
+  console.log("Password passed regex check:", password); // Debugging statement
+  return true;
 }
 
 
