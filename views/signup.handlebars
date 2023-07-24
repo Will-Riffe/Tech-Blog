@@ -13,20 +13,23 @@
 
       <!-- Username -->
       <div class="form-group">
-        <label for="name">Username:</label>
-        <input class="userName-signup form-control" maxlength="15" name="name" placeholder="My name is... what?" type="text" />
+        <label>Username: <input autocomplete="username" class="userName-signup form-control" maxlength="15" name="name"
+            placeholder="My name is... what?" type="text" />
+        </label>
       </div>
 
       <!-- Email -->
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input class="email-signup form-control" name="email" placeholder="Your email goes here..." type="email" />
+        <label>Email: <input autocomplete="email" class="email-signup form-control" name="email" placeholder="Your email goes here..."
+            type="email" />
+        </label>
       </div>
 
       <!-- Password -->
       <div class="form-group">
-        <label for="password">Password:</label>
-        <input class="password-signup form-control" minlength="8" name="password" placeholder="(8-digit minimum)" type="password" />
+        <label>Password: <input class="password-signup form-control" minlength="8" name="password"
+            placeholder="(8-digit minimum)" type="password" />
+        </label>
       </div>
 
       <!-- Submit Credentials -->
@@ -35,5 +38,5 @@
   </div>
 </section>
 
-<script src="/js/sign-up/signupApi.js"></script>
 <script src="/js/sign-up/signupCheck.js"></script>
+<script src="/js/sign-up/signupApi.js"></script>
