@@ -1,5 +1,8 @@
 # Tech-Blog Web App
 
+  ![Screenshot of Splash Page](./images/Screenshot%202023-07-27%20at%2013-17-51%20Tech%20Blog.png)
+
+
   ## Description
 Welcome to my CMS-style blog site! Here, you can create, read, update, and delete blog posts. Explore existing blog posts on the homepage, navigate through the site, leave comments, and enjoy a seamless user experience with secure authentication and a user-friendly dashboard. This project is still a work in progress, which will be fleshed out over time.
 
